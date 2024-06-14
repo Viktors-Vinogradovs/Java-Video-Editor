@@ -5,6 +5,7 @@ import com.videoeditor.ui.MainController;
 import com.videoeditor.ui.MainView;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +15,28 @@ public class Main {
 
     public static void main(String[] args) {
         configureLogging();
+
         SwingUtilities.invokeLater(Main::initializeApplication);
+
+        VideoEditor editor = new VideoEditor();
+
+        File videoFile = new File("path/to/video.mp4");
+
+        // Import video asynchronously
+        editor.importVideoAsync(videoFile);
+
+        // Extract thumbnail asynchronously
+        editor.extractThumbnailAsync(videoFile, 10.0);
+
+        // Extract waveform asynchronously
+        editor.extractWaveformAsync(videoFile);
+
+        // Export video asynchronously
+        File outputFile = new File("path/to/output.mp4");
+        editor.exportVideoAsync(videoFile, outputFile);
+
+        // The main thread can continue doing other tasks or update the UI
+        System.out.println("Asynchronous tasks started.");
     }
 
     private static void configureLogging() {
