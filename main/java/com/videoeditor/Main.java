@@ -3,6 +3,7 @@ package com.videoeditor;
 import com.videoeditor.core.VideoEditor;
 import com.videoeditor.ui.MainController;
 import com.videoeditor.ui.MainView;
+import com.videoeditor.ui.TrackPanel;
 
 import javax.swing.*;
 import java.io.File;
@@ -52,6 +53,7 @@ public class Main {
             logger.log(Level.INFO, "Initializing Video Editor Application...");
             VideoEditor videoEditor = new VideoEditor();
             MainView mainView = new MainView();
+            MainController mainController = new MainController(videoEditor, mainView);
             new MainController(videoEditor, mainView);
             mainView.setMainController();
             mainView.setVisible(true);

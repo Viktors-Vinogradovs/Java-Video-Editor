@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -77,6 +79,17 @@ public class TrackPanel extends JPanel {
                         panOffset = 0;
                     }
                     repaint();
+                }
+            }
+        });
+
+        addMouseWheelListener(new MouseWheelListener() {
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent e) {
+                if (e.getPreciseWheelRotation() < 0) {
+                    mainController.zoomIn();
+                } else {
+                    mainController.zoomOut();
                 }
             }
         });
@@ -244,7 +257,7 @@ public class TrackPanel extends JPanel {
         thumbnails.clear();
         double interval = track.getTotalDuration() / 5; // Generate 5 thumbnails for simplicity
         for (int i = 0; i < 5; i++) {
-            BufferedImage thumbnail = videoEditor.extractThumbnail(new File(track.getSegments().getFirst().getFilePath()), i * interval);
+            BufferedImage thumbnail = videoEditor.extractThumbnail(new File(track.getSegments().get(0).getFilePath()), i * interval);
             if (thumbnail != null) {
                 thumbnails.add(thumbnail);
             } else {
@@ -258,7 +271,7 @@ public class TrackPanel extends JPanel {
         waveforms.clear();
         double interval = track.getTotalDuration() / 5; // Generate 5 waveforms for simplicity
         for (int i = 0; i < 5; i++) {
-            BufferedImage waveform = videoEditor.extractWaveform(new File(track.getSegments().getFirst().getFilePath()));
+            BufferedImage waveform = videoEditor.extractWaveform(new File(track.getSegments().get(0).getFilePath()));
             if (waveform != null) {
                 waveforms.add(waveform);
             } else {
