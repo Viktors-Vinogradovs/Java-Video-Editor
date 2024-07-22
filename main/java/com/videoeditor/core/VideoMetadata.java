@@ -1,9 +1,12 @@
 package com.videoeditor.core;
 
-/**
- * @param duration Duration in seconds
- */
-public record VideoMetadata(int duration) {
+public class VideoMetadata {
+
+    private final int duration;
+
+    public VideoMetadata(int duration) {
+        this.duration = duration;
+    }
 
     @Override
     public String toString() {
