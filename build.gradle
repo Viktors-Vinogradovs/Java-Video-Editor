@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.5.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group = 'com.videeditor'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.formdev:flatlaf:2.0'
+    implementation 'uk.co.caprica:vlcj:4.8.1'
+    implementation 'net.java.dev.jna:jna:5.8.0'
+    implementation 'net.java.dev.jna:jna-platform:5.8.0'
+    // JUnit 5 dependencies
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation files('C:/Program Files (x86)/JMF2.1.1e/lib/jmf.jar')
+    // AssertJ for fluent assertions
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+
+    // Spring Boot Test dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
+}
+
+application {
+    mainClassName = 'com.videoeditor.Main'
+    applicationDefaultJvmArgs = ['-Xms512m', '-Xmx1024m'] // Adjust memory settings here
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}
+
