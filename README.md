@@ -1,51 +1,79 @@
-Java Video Editor(VibeCoded + unfinished)
-Overview
-A desktop video editor written in Java 11, combining a Swing interface with FFmpeg-powered processing.
-It uses VLCJ for playback/preview and FlatLaf for modern look and feel.
+# Java Video Editor (Vibe Coded)
 
-Features
-Project & track management – create projects with multiple video, audio, and subtitle tracks.
+[![GitHub repo](https://img.shields.io/badge/repo-Java--Video--Editor-blue)](https://github.com/Viktors-Vinogradovs/Java-Video-Editor)
 
-Segment editing – add, split, copy, and remove timeline segments; audio tracks can overlap for mixing.
+A desktop video editor written in **Java 11**, combining a Swing interface with **FFmpeg** for processing.
+Uses **VLCJ** for playback/preview and **FlatLaf** for a modern look and feel.
 
-Export service – render projects using FFmpeg with customizable resolution, frame rate, and quality.
+ **Status:** Work in Progress – some features may be incomplete or unstable.
 
-Thumbnail caching – generate and cache thumbnails for quick timeline navigation.
+---
 
-Logging & diagnostics – detailed console logging for troubleshooting.
+##  Features
 
-Requirements
-Java 11+
+* **Project & Track Management** – create projects with multiple video, audio, and subtitle tracks.
+* **Segment Editing** – add, split, copy, and remove timeline segments; audio tracks can overlap for mixing.
+* **Export Service** – render projects using FFmpeg with customizable resolution, frame rate, and quality.
+* **Thumbnail Caching** – generate and cache thumbnails for smooth timeline navigation.
+* **Logging & Diagnostics** – detailed console logs for troubleshooting.
 
-FFmpeg available on the system PATH
+---
 
-VLC installed (required by VLCJ)
+##  Requirements
 
-Gradle (wrapper included)
+* **Java 11+**
+* **FFmpeg** installed and available on system `PATH`
+* **VLC** installed (required by VLCJ)
+* **Gradle** (wrapper included)
+* *(Optional)* JMF libraries if legacy media features are needed
 
-Optional: JMF libraries if you intend to use legacy media features.
+---
 
-Building
+##  Building
+
+```bash
 ./gradlew build
-Artifacts will appear in build/libs/.
+```
 
-Running
+Artifacts will be available in `build/libs/`.
+
+---
+
+##  Running
+
+```bash
 ./gradlew run
+```
+
 The application starts with the Swing-based main window.
 
-Project Structure
+---
+
+##  Project Structure
+
+```
 src/main/java/com/videoeditor/
 ├── core/          # Metadata, thumbnail, and processing services
 ├── export/        # Export dialog and service
 ├── model/         # Project, track, and segment models
 ├── ui/            # Swing UI components (controllers, panels, dialogs)
 └── Main.java      # Application entry point
-Contributing
-Fork and clone the repository.
+```
 
-Create feature branches and follow the existing code style.
+---
 
-Submit pull requests with clear descriptions and ensure code compiles.
+##  Contributing
 
-License
-Specify your chosen license (e.g., MIT, Apache 2.0, etc.) here.
+1. Fork and clone the repository
+2. Create a feature branch and follow the existing code style
+3. Submit a pull request with a clear description and ensure the code compiles
+
+---
+
+##  License
+
+Specify your chosen license here (e.g., **MIT**, **Apache 2.0**, etc.).
+
+---
+
+**Repository:** [Viktors-Vinogradovs/Java-Video-Editor](https://github.com/Viktors-Vinogradovs/Java-Video-Editor)
